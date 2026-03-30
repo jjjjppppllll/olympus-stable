@@ -1,3 +1,13 @@
+####################
+####################
+# OLYMPUS ZSHRC V1.0
+####################
+####################
+
+##########
+# SYS VARS
+##########
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
@@ -103,43 +113,55 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Salutation d'Olympus
+###################
+# SYS CUSTOMIZATION
+###################
+
+# FASTFETCH PKM
 krabby random --no-title
-echo "" # Petit espace pour respirer
+echo ""
 fastfetch
 
 # Created by `pipx` on 2026-03-28 15:33:53
 export PATH="$PATH:/home/athena/.local/bin"
 
+# SPICETIFY
 export PATH=$PATH:/home/athena/.spicetify
 alias theme='matugen image $1 && spicetify apply'
 
+##################
+# SYS OPTIMIZATION
+##################
+
+# POWER MONITOR
+alias pwr='powertop'
+alias gpu='sudo radeontop'
+alias usage='btop'
+
+# POWER LIMIT
 alias batt80='sudo tlp setcharge 75 80'
 alias batt100='sudo tlp fullcharge'
 
-# --- Optimisation Olympus ---
-
-# Raccourcis pour surveiller la consommation
-alias pwr='powertop'
-alias gpu='sudo radeontop'
-alias usage='btop' # Si tu l'as installé, sinon 'top' ou 'htop'
-
-# Maintenance rapide d'Arch
+# QUICK UPDATE
 alias up='sudo pacman -Syu'
 alias yup='yay -Syu' # Si tu utilises yay pour l'AUR
 
-# Raccourci pour éditer ce fichier et recharger la config
+# ZSHRC EDIT
 alias zconf='nvim ~/.zshrc'
 alias zsrc='source ~/.zshrc && echo "Config rechargée !"'
 
-# Toggle Radio (pour couper le modem s'il se réveille)
+# STEALTHMODE
 alias wwanoff='nmcli radio wwan off'
 alias wwanon='nmcli radio wwan on'
 
 # Fix Diode Micro (F4) - à tester si elle reste allumée
 alias ledoff="brightnessctl --device='platform::micmute' set 0"
 
-# Fonction d'automatisation GHunt avec Horodatage Précis
+#######
+# OSINT
+#######
+
+# GHUNT
 gtrace() {
     local email=$1
     if [[ -z "$email" ]]; then
@@ -147,21 +169,16 @@ gtrace() {
         return 1
     fi
 
-    # Extraire la date et l'heure (Ex: 2026-03-30_19h05)
     local timestamp=$(date +"%Y-%m-%d_%Hh%M")
     
-    # Extraire ce qu'il y a avant le @
     local ident=${email%%@*}
     
-    # Chemin du fichier dans ton dossier exports
     local filename="${timestamp}-${ident}_ghunt.txt"
     local output="$HOME/Documents/OSINT/exports/$filename"
 
     echo "🕷️  Spidering $email..."
     echo "📂 Destination : $filename"
 
-    # Exécution de GHunt via ton alias existant
-    # On utilise "command ghunt" pour être sûr d'appeler l'alias/binaire
     ghunt email "$email" > "$output"
 
     if [[ $? -eq 0 ]]; then
@@ -171,6 +188,7 @@ gtrace() {
     fi
 }
 
+# MAIGRET
 investigate() {
     local target=$1
     if [[ -z "$target" ]]; then
@@ -178,30 +196,23 @@ investigate() {
         return 1
     fi
 
-    # Horodatage
     local timestamp=$(date +"%Y-%m-%d_%Hh%M")
     
-    # Nom de base pour les rapports Maigret
     local report_name="${timestamp}-${target}_maigret"
     local export_dir="$HOME/Documents/OSINT/exports"
 
     echo "🔍 Enquête Maigret sur : $target"
     echo "📄 Génération des rapports dans $export_dir..."
 
-    # Lancement de maigret avec options de rapport propres
-    # --txt : génère un résumé texte des résultats trouvés uniquement
-    # --folder : définit où enregistrer les rapports
     python3 -m maigret "$target" --folder "$export_dir" --txt
 
-    # On renomme le fichier généré par maigret pour qu'il suive TA nomenclature
-    # Maigret crée par défaut "report_<target>.txt"
     if [[ -f "$export_dir/report_${target}.txt" ]]; then
         mv "$export_dir/report_${target}.txt" "$export_dir/${report_name}.txt"
         echo "✅ Rapport texte propre : ${report_name}.txt"
     fi
 }
 
-# Fonction d'automatisation Holehe (Vérification d'inscription par mail)
+# HOLEHE
 check_mail() {
     local email=$1
     if [[ -z "$email" ]]; then
@@ -209,22 +220,16 @@ check_mail() {
         return 1
     fi
 
-    # Horodatage précis (comme les autres)
     local timestamp=$(date +"%Y-%m-%d_%Hh%M")
     
-    # Extraire le préfixe
     local ident=${email%%@*}
     
-    # Nom du fichier final
     local filename="${timestamp}-${ident}_holehe.txt"
     local output="$HOME/Documents/OSINT/exports/$filename"
 
     echo "🔍 Holehe vérifie les inscriptions pour : $email"
     echo "📂 Archivage dans : $filename"
 
-    # Exécution de holehe
-    # --only-used : n'affiche que les sites où le compte existe (évite le bruit)
-    # --no-color : pour un fichier texte propre
     holehe "$email" --only-used --no-color > "$output"
 
     if [[ $? -eq 0 ]]; then
@@ -234,7 +239,7 @@ check_mail() {
     fi
 }
 
-# Fonction d'automatisation Sherlock (Recherche rapide de pseudo)
+# SHERLOCK
 hunt_user() {
     local target=$1
     if [[ -z "$target" ]]; then
@@ -242,28 +247,17 @@ hunt_user() {
         return 1
     fi
 
-    # Horodatage
     local timestamp=$(date +"%Y-%m-%d_%Hh%M")
     
-    # Nom du fichier final
     local filename="${timestamp}-${target}_sherlock.txt"
     local output="$HOME/Documents/OSINT/exports/$filename"
 
     echo "🕵️  Sherlock traque le pseudo : $target"
     echo "📂 Archivage dans : $filename"
 
-    # Exécution de Sherlock
-    # --folderout : définit le dossier où Sherlock crée son propre rapport
-    # --print-found : n'affiche que les comptes trouvés (plus propre)
-    # On redirige le résultat texte final vers ton dossier exports
-    
-    # Note : Si 'sherlock' n'est pas dans ton PATH, remplace par 
-    # python3 ~/Documents/OSINT/tools/sherlock/sherlock "$target"
     sherlock "$target" --print-found --no-color > "$output"
 
     if [[ $? -eq 0 ]]; then
-        # Sherlock crée aussi un fichier .txt par défaut dans son propre dossier, 
-        # on peut le supprimer car on a déjà redirigé la sortie vers 'exports'
         rm -f "${target}.txt" 2>/dev/null
         echo "✅ Sherlock a terminé. Rapport dans exports/"
     else
@@ -271,7 +265,7 @@ hunt_user() {
     fi
 }
 
-# Fonction d'automatisation Socialscan (Vérification rapide Email/Pseudo)
+# SOCIALSCAN
 scan_social() {
     local target=$1
     if [[ -z "$target" ]]; then
@@ -279,21 +273,16 @@ scan_social() {
         return 1
     fi
 
-    # Horodatage
     local timestamp=$(date +"%Y-%m-%d_%Hh%M")
     
-    # Extraire l'identifiant (gère email ou pseudo simple)
     local ident=${target%%@*}
     
-    # Nom du fichier final
     local filename="${timestamp}-${ident}_socialscan.txt"
     local output="$HOME/Documents/OSINT/exports/$filename"
 
     echo "🔍 Socialscan interroge les plateformes pour : $target"
     echo "📂 Archivage dans : $filename"
 
-    # Exécution de socialscan
-    # On redirige le résultat vers le fichier
     socialscan "$target" > "$output"
 
     if [[ $? -eq 0 ]]; then
@@ -303,9 +292,10 @@ scan_social() {
     fi
 }
 
+# INSTAGRAM
 archive_insta() {
     local target=$1
-    local sock_user="TON_NOM_UTILISATEUR_INSTA" # <--- METS TON PSEUDO ICI
+    local sock_user="INSTA_USERNAME"
     
     if [[ -z "$target" ]]; then
         echo "Usage: archive_insta <username>"
@@ -318,8 +308,6 @@ archive_insta() {
 
     echo "📸 Tentative d'archivage de : $target avec le compte $sock_user"
     
-    # On ajoute --login pour éviter le 403
-    # --no-video-thumbnails pour gagner du temps et de la place
     instaloader --login "$sock_user" --dirname-pattern="$export_dir" --no-video-thumbnails "$target"
 
     if [[ $? -eq 0 ]]; then
@@ -329,7 +317,7 @@ archive_insta() {
     fi
 }
 
-# La Forge d'Enquête : Crée une structure de dossier propre
+# NEW CASE FORGE
 new_case() {
     local case_name=$1
     if [[ -z "$case_name" ]]; then
@@ -340,20 +328,17 @@ new_case() {
     local date=$(date +%Y-%m-%d)
     local full_path="$HOME/Documents/OSINT/Targets/${date}_${case_name}"
 
-    # Création de l'arborescence de combat
     mkdir -p "$full_path"/{reports,evidence,notes,screenshots}
 
     echo "🏛️  Nouvelle affaire ouverte : ${date}_${case_name}"
     echo "📂 Chemin : $full_path"
     
-    # On se déplace directement dedans pour commencer à bosser
     cd "$full_path"
     
-    # On crée un fichier de notes vide pour démarrer
     touch "notes/investigation_log.md"
 }
 
-# Fonction d'analyse de numéro de téléphone (OSINT)
+# PHONEINFOGA
 trace_phone() {
     local phone=$1
     if [[ -z "$phone" ]]; then
@@ -361,22 +346,14 @@ trace_phone() {
         return 1
     fi
 
-    # Horodatage
     local timestamp=$(date +"%Y-%m-%d_%Hh%M")
-    
-    # Nettoyage du numéro pour le nom de fichier (on enlève le +)
     local clean_phone=$(echo "$phone" | sed 's/+//g')
-    
-    # Nom du fichier final
     local filename="${timestamp}-${clean_phone}_phoneinfoga.txt"
     local output="$HOME/Documents/OSINT/exports/$filename"
 
     echo "📞 Analyse du numéro : $phone"
     echo "📂 Archivage dans : $filename"
 
-    # Exécution de PhoneInfoga
-    # scan : lance l'analyse
-    # -n : spécifie le numéro (format international requis)
     phoneinfoga scan -n "$phone" > "$output"
 
     if [[ $? -eq 0 ]]; then

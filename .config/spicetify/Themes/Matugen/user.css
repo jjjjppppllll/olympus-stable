@@ -1,0 +1,11 @@
+.Root__nav-bar,
+.Root__main-view,
+.Root__now-playing-bar,
+.nav-bar,
+.main-view-container {
+    background-color: transparent !important;
+}
+
+.Root__top-bar {
+    background-color: rgba(0,0,0,0) !important;
+}

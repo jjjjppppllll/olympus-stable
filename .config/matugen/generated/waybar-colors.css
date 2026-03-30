@@ -1,27 +1,25 @@
-/*
- * ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
- * ┃      ZUSQII  -  W A Y B A R  C O L O R S  (matugen generated)    ┃
- * ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
- *
- * @define-color names match style.css exactly — drop-in replacement.
- * style.css uses: @surface, @text, @subtext, @primary, @secondary,
- *                 @tertiary, @error, @on_primary
- */
+/*/////////////////////////////
+/ OLYMPUS THEME.CSS
+/ V1.0 - STABLE
+/ GIT: jjjjppppllll
+/ BASED ON ZUSQII WAYBAR COLORS
+/////////////////////////////*/
 
-@define-color surface              #1a1110;
-@define-color on_surface           #f1dfdb;
-@define-color surface_container    #271d1c;
-@define-color surface_container_high #322826;
+/* MAIN COLORS */
+@define-color surface              #16130b;
+@define-color on_surface           #e9e2d4;
+@define-color surface_container    #231f17;
+@define-color surface_container_high #2d2a21;
 
-/* style.css aliases */
-@define-color text                 #f1dfdb;
-@define-color subtext              #d8c2be;
+/* STYLE.CSS ALIASES */
+@define-color text                 #e9e2d4;
+@define-color subtext              #cec6b4;
 
-@define-color primary              #ffb4a7;
-@define-color on_primary           #561e15;
-@define-color secondary            #e7bdb5;
-@define-color tertiary             #ddc48c;
+@define-color primary              #e1c46d;
+@define-color on_primary           #3c2f00;
+@define-color secondary            #d4c5a1;
+@define-color tertiary             #accfaf;
 
-@define-color outline              #a08c89;
+@define-color outline              #979080;
 @define-color error                #ffb4ab;
 @define-color on_error             #690005;
