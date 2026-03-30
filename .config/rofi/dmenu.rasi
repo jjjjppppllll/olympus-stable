@@ -1,0 +1,73 @@
+@import "colors.rasi"
+
+configuration {
+    show-icons:     false;
+    click-to-exit:  true;
+    kb-cancel:      "Escape";
+}
+
+* {
+    background-color: transparent;
+    text-color:       @on-surface;
+    border-color:     @outline;
+}
+
+window {
+    width:            300px;
+    border:           1px;
+    border-radius:    14px;
+    background-color: @surface;
+    padding:          8px;
+}
+
+mainbox {
+    children:         [ inputbar, listview ];
+    spacing:          8px;
+    padding:          0;
+    background-color: transparent;
+}
+
+inputbar {
+    children:         [ prompt, entry ];
+    spacing:          8px;
+    padding:          10px 12px;
+    border-radius:    10px;
+    background-color: @surface-container-high;
+}
+
+prompt {
+    text-color:       @primary;
+    background-color: transparent;
+}
+
+entry {
+    placeholder:      "Filtrer...";
+    placeholder-color: @on-surface-variant;
+    background-color: transparent;
+}
+
+listview {
+    lines:            8;
+    fixed-height:     true;
+    scrollbar:        false;
+    spacing:          4px;
+    background-color: transparent;
+    padding:          4px 0;
+}
+
+element {
+    padding:          8px 12px;
+    border-radius:    8px;
+    background-color: transparent;
+}
+
+element selected {
+    background-color: @primary;
+    text-color:       @on-primary;
+}
+
+element-text {
+    background-color: transparent;
+    text-color:       inherit;
+    vertical-align:   0.5;
+}

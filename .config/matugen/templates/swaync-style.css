@@ -1,0 +1,65 @@
+/* Généré par matugen — ne pas éditer */
+
+.control-center {
+  background: {{colors.surface.default.hex}};
+  background-color: {{colors.surface.default.hex}};
+  border-radius: 24px;
+  border: 2px solid {{colors.outline.default.hex}};
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  margin: 10px;
+  padding: 12px;
+  color: {{colors.on_surface.default.hex}};
+}
+
+.widget-buttons-grid {
+  background: {{colors.surface_container.default.hex}};
+  border-radius: 20px;
+  padding: 15px;
+  margin: 10px;
+}
+
+.widget-buttons-grid > box > button {
+  background: {{colors.surface_container_high.default.hex}};
+  border-radius: 12px;
+  color: {{colors.on_surface.default.hex}};
+  margin: 5px;
+  padding: 15px;
+}
+
+.widget-buttons-grid > box > button:hover {
+  background: {{colors.primary.default.hex}};
+  color: {{colors.on_primary.default.hex}};
+}
+
+.notification-row {
+  margin: 8px 10px;
+  border-radius: 16px;
+  background: {{colors.surface_container.default.hex}};
+  color: {{colors.on_surface.default.hex}};
+}
+
+.notification-content {
+  padding: 12px;
+}
+
+.widget-calendar {
+  background: {{colors.surface_container.default.hex}};
+  border-radius: 20px;
+  padding: 15px;
+  margin: 10px;
+}
+
+.widget-calendar calendar {
+  color: {{colors.on_surface.default.hex}};
+}
+
+.close-button {
+  background: transparent;
+  color: {{colors.on_surface.default.hex}};
+  border-radius: 50%;
+}
+
+.close-button:hover {
+  background: {{colors.error.default.hex}};
+  color: {{colors.on_error.default.hex}};
+}

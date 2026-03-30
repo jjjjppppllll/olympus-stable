@@ -1,0 +1,98 @@
+/**
+ * ATHENA — ROFI LAUNCHER CONFIG (VERSION COMPACTE)
+ */
+
+configuration {
+    show-icons:         true;
+    icon-theme:         "Papirus-Dark";
+    /* RÉDUIT : de 18 à 12 pour un aspect plus pro */
+    font:               "JetBrainsMono Nerd Font 12"; 
+    display-drun:       "  ";
+    display-run:        "  ";
+    display-clipboard:  " 󰅌 ";
+    kb-cancel:              "Escape";
+    kb-remove-char-back:    "BackSpace,Shift+BackSpace";
+    kb-accept-entry:        "Return,KP_Enter";
+    scroll-method:          0;
+    click-to-exit:          true;
+}
+
+@import "colors.rasi"
+
+* {
+    /* ... Tes variables de couleurs restent identiques ... */
+    var-win-bg:           @surface;
+    var-input-bg:         @surface-container-high;
+    var-urgent-bg:        @error-container;
+    var-active-bg:        @primary;
+    var-message-bg:       @surface-container;
+    var-text-def:         @on-surface;
+    var-text-dim:         @on-surface-variant;
+    var-text-urgent:      @on-error-container;
+    var-text-active:      @on-primary;
+    var-border:           @outline;
+    background-color:     transparent;
+    text-color:           @var-text-def;
+}
+
+window {
+    location: center; 
+    anchor: center; 
+    width: 20%; /* RÉDUIT : De 25% à 20% pour plus de finesse */
+    background-color: @var-win-bg;
+    border: 1px; /* RÉDUIT : Plus fin */
+    border-radius: 8px; /* RÉDUIT */
+    padding: 12px; /* RÉDUIT : De 20px à 12px */
+}
+
+mainbox {
+    children: [ inputbar, listview ];
+    spacing: 10px; /* RÉDUIT */
+}
+
+inputbar {
+    children: [ prompt, entry ]; 
+    spacing: 8px;
+    padding: 8px; /* RÉDUIT : De 12px à 8px */
+    border-radius: 6px;
+    background-color: @var-input-bg;
+}
+
+prompt { 
+    text-color: @var-text-dim; 
+}
+
+entry { 
+    placeholder: "Search..."; 
+    placeholder-color: @var-text-dim; 
+}
+
+listview { 
+    columns: 1; 
+    lines: 8; /* AUGMENTÉ : On compense la petite taille par plus de lignes visibles */
+    cycle: true; 
+    scrollbar: false; 
+    spacing: 4px; /* RÉDUIT : Éléments plus serrés */
+    fixed-height: false; 
+}
+
+element { 
+    padding: 6px 10px; /* RÉDUIT : De 8/12 à 6/10 */
+    border-radius: 4px; 
+    spacing: 8px; 
+}
+
+element-icon { 
+    size: 1em; /* RÉDUIT : De 1.2em à 1em */
+    vertical-align: 0.5; 
+}
+
+element-text { 
+    vertical-align: 0.5; 
+}
+
+/* --- Sélection --- */
+element selected.normal { 
+    background-color: @var-active-bg;  
+    text-color: @var-text-active; 
+}

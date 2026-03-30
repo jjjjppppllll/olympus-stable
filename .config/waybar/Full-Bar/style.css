@@ -1,0 +1,104 @@
+@import "theme.css";
+
+* {
+    font-family: "JetBrainsMono Nerd Font", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+}
+
+window#waybar {
+    background: alpha(@surface, 0.75);
+    border-radius: 12px;
+    color: @on_surface;
+    border: 1px solid alpha(@outline, 0.2);
+}
+
+#custom-launcher, #window, #cpu, #memory, #mpris,
+#custom-cava, #clock, #battery, #network,
+#bluetooth, #custom-power, #custom-performance {
+    padding: 0 12px;
+    margin: 4px 2px;
+}
+
+#custom-launcher { font-size: 18px; color: @primary; }
+#cpu             { color: @tertiary; }
+#memory          { color: @secondary; }
+#mpris           { color: @primary; min-width: 100px; }
+#custom-cava     { color: @secondary; font-size: 14px; }
+
+/* WORKSPACE PILL */
+#workspaces {
+    background-color: @surface_container;
+    margin: 8px 10px;
+    border-radius: 20px;
+    padding: 0 4px;
+}
+#workspaces button {
+    color: alpha(@on_surface, 0.3);
+    margin: 2px;
+    padding: 0;
+    min-width: 18px;
+    min-height: 18px;
+    font-size: 12px;
+    transition: all 0.2s ease;
+}
+#workspaces button.active {
+    background-color: @primary;
+    color: @on_primary;
+    border-radius: 50%;
+}
+
+#clock          { color: @primary; }
+
+#custom-power   { 
+    color: @on_surface; 
+    font-size: 16px;
+    margin: 4px 3px;
+    padding: 2px 10px;
+    margin-right: 10px;
+}
+
+#network, #bluetooth {
+    border-radius: 10px;
+    margin: 6px 2px;
+}
+
+#pulseaudio {
+    color: @on_surface;
+    border-radius: 10px;
+    padding: 0 5px;
+    margin: 6px 2px;
+    margin-right: 10px;
+}
+#pulseaudio.muted {
+    background-color: @error;
+    color: @on_error;
+}
+
+@keyframes pulse {
+    to { background-color: alpha(@error, 0.6); color: @on_error; }
+}
+#cpu.critical {
+    animation-name: pulse;
+    animation-duration: 0.8s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    border-radius: 8px;
+}
+#temperature {
+    color: @tertiary;
+    border-radius: 12px;
+    padding: 2px 10px;
+    margin: 4px 3px;
+    font-weight: 700;
+}
+
+#temperature.critical {
+    color: @error;
+}
+
+#power-profiles-daemon {
+    color: @secondary;
+    padding: 0 6px;
+}

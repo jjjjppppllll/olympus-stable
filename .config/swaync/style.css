@@ -1,0 +1,65 @@
+/* Généré par matugen — ne pas éditer */
+
+.control-center {
+  background: #16130b;
+  background-color: #16130b;
+  border-radius: 24px;
+  border: 2px solid #979080;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  margin: 10px;
+  padding: 12px;
+  color: #e9e2d4;
+}
+
+.widget-buttons-grid {
+  background: #231f17;
+  border-radius: 20px;
+  padding: 15px;
+  margin: 10px;
+}
+
+.widget-buttons-grid > box > button {
+  background: #2d2a21;
+  border-radius: 12px;
+  color: #e9e2d4;
+  margin: 5px;
+  padding: 15px;
+}
+
+.widget-buttons-grid > box > button:hover {
+  background: #e1c46d;
+  color: #3c2f00;
+}
+
+.notification-row {
+  margin: 8px 10px;
+  border-radius: 16px;
+  background: #231f17;
+  color: #e9e2d4;
+}
+
+.notification-content {
+  padding: 12px;
+}
+
+.widget-calendar {
+  background: #231f17;
+  border-radius: 20px;
+  padding: 15px;
+  margin: 10px;
+}
+
+.widget-calendar calendar {
+  color: #e9e2d4;
+}
+
+.close-button {
+  background: transparent;
+  color: #e9e2d4;
+  border-radius: 50%;
+}
+
+.close-button:hover {
+  background: #ffb4ab;
+  color: #690005;
+}
