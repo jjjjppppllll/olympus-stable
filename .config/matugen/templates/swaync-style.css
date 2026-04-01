@@ -1,65 +1,121 @@
-/* Généré par matugen — ne pas éditer */
+/* * Template Matugen - Olympus Style
+ * Version : 2.1 (Anti-Opaque & Clean Structure)
+ */
 
+/* --- CONFIGURATION GLOBALE --- */
+* {
+  font-family: "JetBrainsMono Nerd Font", "Inter", "Roboto", "Ubuntu", sans-serif;
+  outline: none;
+  box-shadow: none;
+}
+
+/* --- NETTOYAGE RADICAL DES CONTENEURS (Anti-Rectangle Opaque) --- */
+/* On cible les éléments GTK de base avant de styliser nos classes */
+list, row, viewport, scrollview {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* --- PANNEAU PRINCIPAL --- */
 .control-center {
-  background: {{colors.surface.default.hex}};
-  background-color: {{colors.surface.default.hex}};
-  border-radius: 24px;
-  border: 2px solid {{colors.outline.default.hex}};
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  margin: 10px;
-  padding: 12px;
+  background: rgba({{colors.surface.default.red}}, {{colors.surface.default.green}}, {{colors.surface.default.blue}}, 0.85);
+  border-radius: 20px;
+  border: 1px solid rgba({{colors.outline.default.red}}, {{colors.outline.default.green}}, {{colors.outline.default.blue}}, 0.15);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  margin: 15px;
+  padding: 30px;
   color: {{colors.on_surface.default.hex}};
 }
 
-.widget-buttons-grid {
-  background: {{colors.surface_container.default.hex}};
+/* --- STRUCTURE DES NOTIFICATIONS --- */
+.widget-notifications {
+  background: transparent !important;
+  margin: 0 !important;
+}
+
+.notification {
+  background: transparent !important;
+  border: none !important;
+}
+
+/* --- STYLE DES RANGÉES (INDIVIDUELLES) --- */
+.notification-row {
+  margin: 10px 5px !important; 
+  border-radius: 20px !important;
+  background: rgba({{colors.surface_container_low.default.red}}, {{colors.surface_container_low.default.green}}, {{colors.surface_container_low.default.blue}}, 0.7) !important;
+  border: 1px solid rgba({{colors.outline.default.red}}, {{colors.outline.default.green}}, {{colors.outline.default.blue}}, 0.1) !important;
+  transition: all 0.2s ease;
+}
+
+/* État Unread / New (Highlight subtil par la bordure) */
+.notification-row.unread,
+.notification-row.new,
+.notification-row:not(.read) {
+  border: 1px solid rgba({{colors.primary.default.red}}, {{colors.primary.default.green}}, {{colors.primary.default.blue}}, 0.3) !important;
+}
+
+/* État Focus / Hover / Selected (Verre légèrement plus clair) */
+.notification-row:focus,
+.notification-row:selected,
+.notification-row:hover {
+  background: rgba({{colors.surface_container_low.default.red}}, {{colors.surface_container_low.default.green}}, {{colors.surface_container_low.default.blue}}, 0.8) !important;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Sécurité pour le contenu interne */
+.notification-row > box,
+.notification-content {
+  background: transparent !important;
+  padding: 20px;
+  font-size: 16px;
+}
+
+/* --- WIDGETS (BOUTONS & CALENDRIER) --- */
+.widget-buttons-grid, 
+.widget-calendar {
+  background: rgba({{colors.surface_container.default.red}}, {{colors.surface_container.default.green}}, {{colors.surface_container.default.blue}}, 0.3);
   border-radius: 20px;
-  padding: 15px;
-  margin: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
 }
 
 .widget-buttons-grid > box > button {
   background: {{colors.surface_container_high.default.hex}};
-  border-radius: 12px;
+  border-radius: 14px;
   color: {{colors.on_surface.default.hex}};
-  margin: 5px;
-  padding: 15px;
+  margin: 8px;
+  padding: 20px;
+  transition: all 0.3s cubic-bezier(0.05, 0.9, 0.1, 1.0);
 }
 
 .widget-buttons-grid > box > button:hover {
   background: {{colors.primary.default.hex}};
   color: {{colors.on_primary.default.hex}};
+  transform: scale(1.02);
 }
 
-.notification-row {
-  margin: 8px 10px;
-  border-radius: 16px;
-  background: {{colors.surface_container.default.hex}};
-  color: {{colors.on_surface.default.hex}};
-}
-
-.notification-content {
-  padding: 12px;
-}
-
-.widget-calendar {
-  background: {{colors.surface_container.default.hex}};
-  border-radius: 20px;
-  padding: 15px;
-  margin: 10px;
-}
-
-.widget-calendar calendar {
-  color: {{colors.on_surface.default.hex}};
-}
-
+/* --- ÉLÉMENTS SPÉCIFIQUES --- */
 .close-button {
-  background: transparent;
+  background: rgba({{colors.error.default.red}}, {{colors.error.default.green}}, {{colors.error.default.blue}}, 0.1);
   color: {{colors.on_surface.default.hex}};
-  border-radius: 50%;
+  border-radius: 10px;
+  padding: 6px;
 }
 
-.close-button:hover {
-  background: {{colors.error.default.hex}};
-  color: {{colors.on_error.default.hex}};
+.notification-default-action .image {
+  margin: 10px;
+  border-radius: 12px; 
+}
+
+.notification-default-action .body-image {
+  margin-top: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba({{colors.outline.default.red}}, {{colors.outline.default.green}}, {{colors.outline.default.blue}}, 0.2);
+}
+
+.app-icon {
+  margin-right: 8px;
 }

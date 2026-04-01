@@ -1,0 +1,71 @@
+# ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+# ┃                                                                  ┃
+# ┃      A T H E N A  -  M A T U G E N  C O N F I G                  ┃
+# ┃                                                                  ┃
+# ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+[config]
+
+# -----------------------------------------------------------------------------
+# Kitty
+# -----------------------------------------------------------------------------
+[templates.kitty]
+input_path  = '~/.config/matugen/templates/kitty-colors.conf'
+output_path = '~/.config/matugen/generated/kitty-colors.conf'
+post_hook   = '$HOME/.scripts/update-wallpaper-thumb.sh'
+
+# -----------------------------------------------------------------------------
+# Hyprland (Restauration propre du clavier)
+# -----------------------------------------------------------------------------
+[templates.hyprland]
+input_path  = '~/.config/matugen/templates/hyprland-colors.conf'
+output_path = '~/.config/hypr/colors.conf'
+post_hook   = '''
+bash -c '{
+  L=$(cat /tmp/hypr_kb_layout 2>/dev/null || echo "fr")
+  V=$(cat /tmp/hypr_kb_variant 2>/dev/null || echo "")
+  
+  if [ "$L" = "fr" ]; then
+     hyprctl keyword input:kb_variant ""
+     hyprctl keyword input:kb_layout fr
+  else
+     hyprctl --batch "keyword input:kb_layout us; keyword input:kb_variant intl"
+  fi
+  
+  $HOME/.scripts/update-wallpaper-thumb.sh
+} &'
+'''
+
+# -----------------------------------------------------------------------------
+# Waybar
+# -----------------------------------------------------------------------------
+[templates.waybar]
+input_path  = '~/.config/matugen/templates/waybar-colors.css'
+output_path = '~/.config/matugen/generated/waybar-colors.css'
+post_hook   = '''
+bash -c '{
+  ln -nfs "$HOME/.config/matugen/generated/waybar-colors.css" "$HOME/.config/waybar/theme.css"
+  pkill -SIGUSR2 waybar || (waybar &)
+} &'
+'''
+
+# -----------------------------------------------------------------------------
+# Spotify
+# -----------------------------------------------------------------------------
+[templates.spotify]
+input_path  = '~/.config/matugen/templates/spotify-color.ini'
+output_path = '~/.config/spicetify/Themes/Matugen/color.ini'
+post_hook   = 'spicetify apply &'
+
+# -----------------------------------------------------------------------------
+# Autres modules
+# -----------------------------------------------------------------------------
+[templates.rofi]
+input_path  = '~/.config/matugen/templates/rofi-colors.rasi'
+output_path = '~/.config/matugen/generated/rofi-colors.rasi'
+post_hook   = 'ln -nfs "$HOME/.config/matugen/generated/rofi-colors.rasi" "$HOME/.config/rofi/colors.rasi"'
+
+[templates.gtk3]
+input_path  = '~/.config/matugen/templates/gtk-colors.css'
+output_path = '~/.config/matugen/generated/gtk-3.css'
+post_hook   = 'mkdir -p "$HOME/.config/gtk-3.0" && ln -nfs "$HOME/.config/matugen/generated/gtk-3.css" "$HOME/.config/gtk-3.0/gtk.css"'

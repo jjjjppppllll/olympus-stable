@@ -1,21 +1,10 @@
 //////////////////////////////
 //////////////////////////////
 // OLYMPUS WAYBAR CONFIG.JSONC
-// V1.01 - STABLE
+// V1.0 - STABLE
 // GIT: jjjjppppllll
 //////////////////////////////
 //////////////////////////////
-
-///////////////////////////////
-// WAYBAR DOCK-FULLBAR SETTINGS
-///////////////////////////////
-
-// DO NOT MODIFY
-// LAYER SETS THE WAYBAR POSITION OVER EVERYTHING ELSE
-
-// VARIABLES
-// POSITION, MARGINS, HEIGHT
-// SPACING SETS THE SPACE UNDER THE WAYBAR
 
 {
     "layer": "top",
@@ -25,20 +14,7 @@
     "margin-right": 6,
     "height": 40,
     "spacing": 8, 
-
-//////////
-// MODULES
-//////////
-
-// NOTE:
-// ALL MODULES CAN BE MOVED BETWEEN THREE MODULES
-// AS LEFT AND RIGHT ARE ANCHORED TO THE SIDES AND MIDDLE BEING CENTERED
-// IT'S NICE TO BALANCE EVERYTHING AND NOT TO HAVE AN EMPTY LEFT AND FILLED RIGHT
-
-// MODULES: LEFT
     "modules-left": ["custom/launcher", "hyprland/window"],
-
-// MODULES: CENTER
     "modules-center": [
         "cpu", 
         "memory", 
@@ -46,88 +22,47 @@
         "temperature",
         "custom/cava",
         "hyprland/workspaces", 
-        "clock"
+        "clock",
 ],
+    "modules-right": ["custom/keyboard", "network", "bluetooth", "pulseaudio", "power-profiles-daemon", "battery", "custom/power"],
 
-// MODULES: RIGHT
-    "modules-right": [
-	"custom/keyboard",
-	"network",
-	"bluetooth",
-	"pulseaudio",
-	"power-profiles-daemon",
-	"battery",
-	"custom/power"
-],
-
-///////////////////////////////
-// MODULES: INDIVIDUAL SETTINGS
-///////////////////////////////
-
-// LAUNCHER
-// THIS IS THE LOGO ON THE LEFT LAUNCHING ROFI ON CLICK
-// ADAPT TO WHATEVER APP LAUNCHER YOU ARE USING
     "custom/launcher": {
         "format": "󰣇",
         "on-click": "rofi -show drun",
         "tooltip": false
     },
 
-// ACTIVE TILE
-// THIS PROVIDES INFO ABOUT WHICH TILE IS ACTIVE
-// USE A "\" TO CONCATENATE
     "hyprland/window": {
         "format": "Desktop\n{initialTitle}",
         "max-length": 20
     },
 
-
-// CPU
-// THIS PROVIDES INFO ABOUT CPU USAGE
-// UPDATES EVERY 2 SECONDS
     "cpu": {
-        "interval": 2, // CHANGE THIS NUMBER IN SECONDS FOR REFRESH INTERVAL
+        "interval": 2,
         "format": "󰻠 {usage}%",
         "states": { "critical": 80 }
     },
 
-// RAM
-// THIS PROVIDES INFO ABOUT RAM USAGE
-// UPDATES EVERY 5 SECONDS
     "memory": {
-        "interval": 5, // CHANGE THIS NUMBER IN SECONDS FOR REFRESH INTERVAL
+        "interval": 5,
         "format": "󰍛 {percentage}%"
     },
 
-// MEDIA PLAYER
-// THIS ALLOWS ACTIVE MUSIC PLAYER TO SHOW ACTIVE TITLE
-// LEFT CLICK PAUSES
-// RIGHT CLICK NEXT SONG
-// MIDDLE CLICK PREVIOUS SONG
     "mpris": {
-        "format": "󰎆 {title}", // DECIDE WHICH INFO APPEARS
-        "max-length": 40 // ALLOWS CHAIN LENGTH MODIFICATION
+        "format": "󰎆 {title}",
+        "max-length": 40
     },
     
-// TEMPERATURE
-// THIS PROVIDES INFO ABOUT ACTUAL TEMPERATURE
-// THIS IS SET FOR A CPU ON A LENOVO L14 GEN 5
     "temperature": {
         "thermal-zone": 0,
-        "critical-threshold": 80, // YOURS TO DECIDE WHAT IS YOUR CRITICAL THRESHOLD
+        "critical-threshold": 80,
         "format": "{icon} {temperatureC}°C",
         "format-icons": ["", "", ""],
         "tooltip": false
     },
 
-// CAVA
-// THIS IS CAVA ON THE WAYBAR
-// IT'S FULLY OPTIONNAL BUT NTH
     "custom/cava": { "exec": "waybar-cava", "format": "{}" },
 
-// WORKSPACES
-// THIS SHOWS WHICH WORKSPACE IS ACTIVE
-// WORKSPACES ARE SMALL DOTS AND ACTIVE ONE IS HIGHLIGHTED
     "hyprland/workspaces": {
         "format": "{icon}",
         "on-click": "activate",
@@ -136,19 +71,15 @@
             "active": "",
             "default": ""
         },
-        "persistent-workspaces": { "*": [1, 2, 3, 4, 5, 6] } // NUMBER OF WORKSPACES APPEARING, UP TO TEN
+        "persistent-workspaces": { "*": [1, 2, 3, 4, 5, 6] }
     },
 
-// CLOCK
-// CLOCK IS IN FRENCH FORMAT
-// HOVER SHOWS A CALENDAR IN FRENCH FORMAT
-// NEED TO ADD MATUGEN
 "clock": {
-    "locale": "fr_FR.UTF-8", // CHANGE LOCALE FORMAT
-    "format": "{:%H:%M · %d/%m}", // REVERT DATE TO %m/%d IF NEEDED
+    "locale": "fr_FR.UTF-8",
+    "format": "{:%H:%M · %d/%m}", 
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
-        "mode"          : "month", // CAN BE SWITCHED TO WEEK
+        "mode"          : "month",
         "on-scroll"     : 1,
         "format": {
             "months":     "<span color='#a1cafd'><b>{}</b></span>",
@@ -159,9 +90,6 @@
     }
 },
 
-// POWER PROFILES DAEMON
-// THIS IS USEFUL FOR LENOVO
-// THERE ARE THREE STATES: PERFORMANCE / BALANCED / POWER-SAVER
 "power-profiles-daemon": {
     "format": "{icon}",
     "tooltip-format": "Profil : {profile}",
@@ -173,8 +101,6 @@
     }
 },
 
-// BATTERY
-// THIS SHOWS REMAINING BATTERY CAPACITY
     "battery": { 
         "format": "{icon} {capacity}%", 
         "format-icons": ["", "", "", "", ""] 
@@ -182,38 +108,25 @@
 
     "custom/power": { "format": "", "on-click": "wlogout" },
 
-// NETWORK: WLAN
-// THIS SHOWS CONNECTION STATUS
-// IT'S POSSIBLE TO ADD SSID NAME
-// LAUNCHES NM-CONNECTION-EDITOR ON CLICK
 "network": { 
-        "format-wifi": "",
+        "format-wifi": "", // On garde le nom du réseau {essid}
         "format-ethernet": "󰈀", 
         "format-disconnected": "󰖪",
         "tooltip-format": "{ifname} via {gwaddr}",
         "on-click": "nm-connection-editor"
     },
 
-// NETWORK: BLUETOOTH
-// THIS SHOWS SERVICE STATUS
-// SHOWS CONNECTED DEVICE BATTERY LEVEL IF AVAILABLE
-// LAUNCHES BLUEMAN-MANAGER ON CLICK
     "bluetooth": {
-        "format": "",
-        "format-disabled": "󰂲",
-        "format-connected": "󰂱",
-        "format-connected-battery": "󰂱 {device_battery_percentage}%",
+        "format": "", // État activé mais non connecté
+        "format-disabled": "󰂲", // Désactivé
+        "format-connected": "󰂱", // Connecté (l'icône change)
+        // "format-connected-battery": "󰂱 {device_battery_percentage}%", // Optionnel : affiche la pile si un casque est connecté
         "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connecté(s)",
         "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connecté(s)\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
         "on-click": "blueman-manager"
     },
 
-// PULSEAUDIO
-// THIS IS AUDIO MANAGER, IT SHOWS VOLUME %AGE
-// IF MUTE, VARIABLE COLOR
-// LEFT CLICK: PAVUCONTROL
-// RIGHT CLICK: (UN)MUTE
     "pulseaudio": {
         "format": "{icon} {volume}%",
         "format-bluetooth": "{icon} {volume}%",
@@ -232,14 +145,10 @@
         "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
     },
 
-// KEYBOARD SWITCHER
-// THIS ALLOWS A SWITCH BETWEEN FR & US INTL KEYBOARD THROUGH A SCRIPT
-// SCRIPT IS IN .scripts FOLDER
-// IT'S FULLY OPTIONAL AND DEPENDS ON NEEDS, MH IF USING DIFFERENT LANGUAGES
     "custom/keyboard": {
     "exec": "hyprctl getoption input:kb_layout | grep 'str' | awk '{print $2}' | sed 's/\"//g;s/fr/FR/;s/us/US/'",
     "interval": 1,
-    "on-click": "~/.scripts/toggle-keyboard.sh", // THIS IS THE SCRIPT
+    "on-click": "~/.scripts/toggle-keyboard.sh",
     "tooltip": false
 }
     

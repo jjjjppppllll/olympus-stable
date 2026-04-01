@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
-########################
-########################
-## OLYMPUS MATUGEN THEME
-## V1.01 - STABLE
-## GIT: jjjjppppllll
-## FORKED FROM: zusqii
-########################
-########################
+# ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+# ┃                                                                  ┃
+# ┃      ZUSQII  -  M A T U G E N  T H E M E  R U N N E R            ┃
+# ┃                                                                  ┃
+# ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
 #
 # Usage:
 #   theme [dark|light]                      → regen from current wallpaper

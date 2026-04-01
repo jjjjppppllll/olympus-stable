@@ -11,6 +11,6 @@ if [ -n "$PIDS" ]; then
     notify-send "Sons Clavier" "Désactivés 🔇" -i audio-volume-muted -t 1500
 else
     # Si rien ne tourne, on lance le moteur proprement
-    python $HOME/clic.py > /dev/null 2>&1 &
+    python $HOME/.scripts/clic.py > /dev/null 2>&1 &
     notify-send "Sons Clavier" "Activés 🔊" -i audio-volume-high -t 1500
 fi

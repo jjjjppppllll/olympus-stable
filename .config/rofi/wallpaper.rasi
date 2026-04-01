@@ -43,13 +43,12 @@ configuration {
 window {
     anchor:                      west;
     location:                    west;
-    width:                       320px;   
-    height:                      95%;   
-    x-offset:                    15px;
+    width:                       600px;
+    height:                      98%;
+    x-offset:                    10px;
     y-offset:                    0px;
-    
-    background-color:            @surface;
-    border:                      1px;
+    background-color:            @surface-container-alpha;
+    border:                      0px;
     border-radius:               24px;
     border-color:                @outline;
 }
@@ -84,12 +83,13 @@ entry {
  * ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
  */
 listview {
-    columns:                     1;
-    lines:                       5;      
-    spacing:                     10px;     
+    columns:                     2;
+    lines:                       5;
+    spacing:                     15px;
     cycle:                       true;
-    fixed-height:                true;  
+    fixed-height:                false;
     scrollbar:                   false;
+    layout:                      vertical;
 }
 
 /**
@@ -99,7 +99,7 @@ listview {
  */
 element {
     orientation:                 vertical;
-    padding:                     8px;     
+    padding:                     10px;
     border-radius:               15px;
 }
 
@@ -110,11 +110,10 @@ element selected {
 }
 
 element-icon {
-    size:                        160px;     
-    horizontal-align:            0.5;
+    size:                        200px; 
 }
 
 element-text {
     horizontal-align:            0.5;
-    font:                        "JetBrainsMono Nerd Font 9";
+    font:                        "JetBrainsMono Nerd Font 10";
 }

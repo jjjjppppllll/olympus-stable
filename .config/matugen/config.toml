@@ -1,22 +1,27 @@
-# ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-# ┃                                                                  ┃
-# ┃      A T H E N A  -  M A T U G E N  C O N F I G                  ┃
-# ┃                                                                  ┃
-# ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+##############################
+##############################
+## OLYMPUS MATUGEN CONFIG.TOML
+## V1.01 - STABLE
+## GIT: jjjjppppllll
+##############################
+##############################
 
 [config]
 
-# -----------------------------------------------------------------------------
-# Kitty
-# -----------------------------------------------------------------------------
+#######
+# KITTY
+#######
+
 [templates.kitty]
 input_path  = '~/.config/matugen/templates/kitty-colors.conf'
 output_path = '~/.config/matugen/generated/kitty-colors.conf'
 post_hook   = '$HOME/.scripts/update-wallpaper-thumb.sh'
 
-# -----------------------------------------------------------------------------
-# Hyprland (Restauration propre du clavier)
-# -----------------------------------------------------------------------------
+##########
+# HYPRLAND
+##########
+
+# POSTHOOK ADAPTED FOR THE KEYBOARD SWITCH SCRIPT
 [templates.hyprland]
 input_path  = '~/.config/matugen/templates/hyprland-colors.conf'
 output_path = '~/.config/hypr/colors.conf'
@@ -36,9 +41,10 @@ bash -c '{
 } &'
 '''
 
-# -----------------------------------------------------------------------------
-# Waybar
-# -----------------------------------------------------------------------------
+########
+# WAYBAR
+########
+
 [templates.waybar]
 input_path  = '~/.config/matugen/templates/waybar-colors.css'
 output_path = '~/.config/matugen/generated/waybar-colors.css'
@@ -49,23 +55,35 @@ bash -c '{
 } &'
 '''
 
-# -----------------------------------------------------------------------------
-# Spotify
-# -----------------------------------------------------------------------------
+###########
+# SPICETIFY
+###########
 [templates.spotify]
 input_path  = '~/.config/matugen/templates/spotify-color.ini'
 output_path = '~/.config/spicetify/Themes/Matugen/color.ini'
 post_hook   = 'spicetify apply &'
 
-# -----------------------------------------------------------------------------
-# Autres modules
-# -----------------------------------------------------------------------------
+######
+# ROFI
+######
 [templates.rofi]
 input_path  = '~/.config/matugen/templates/rofi-colors.rasi'
 output_path = '~/.config/matugen/generated/rofi-colors.rasi'
 post_hook   = 'ln -nfs "$HOME/.config/matugen/generated/rofi-colors.rasi" "$HOME/.config/rofi/colors.rasi"'
 
+######
+# GTK3
+######
 [templates.gtk3]
 input_path  = '~/.config/matugen/templates/gtk-colors.css'
 output_path = '~/.config/matugen/generated/gtk-3.css'
 post_hook   = 'mkdir -p "$HOME/.config/gtk-3.0" && ln -nfs "$HOME/.config/matugen/generated/gtk-3.css" "$HOME/.config/gtk-3.0/gtk.css"'
+
+#########
+# SWAYNC
+#########
+
+[templates.swaync]
+input_path  = '~/.config/matugen/templates/swaync-style.css'
+output_path = '~/.config/swaync/style.css'
+post_hook   = 'swaync-client -rs &'
