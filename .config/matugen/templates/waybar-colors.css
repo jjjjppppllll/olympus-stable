@@ -1,11 +1,17 @@
-/*
- * ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
- * ┃      ZUSQII  -  W A Y B A R  C O L O R S  (matugen generated)    ┃
- * ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
- *
- * @define-color names match style.css exactly — drop-in replacement.
- * style.css uses: @surface, @text, @subtext, @primary, @secondary,
- *                 @tertiary, @error, @on_primary
+/* 
+* OLYMPUS MATUGEN TEMPLATES SWAYNC-STYLE.CSS
+* V1.00 - STABLE
+* GITHUB: jjjjppppllll
+*
+* IN USE FOR @define-color IN STYLE.CSS
+* @surface
+* @text
+* @subtext
+* @primary
+* @secondary
+* @tertiary
+* @error
+* @on_primary
  */
 
 @define-color surface              {{colors.surface.default.hex}};
