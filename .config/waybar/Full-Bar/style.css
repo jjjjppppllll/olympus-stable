@@ -29,19 +29,10 @@ window#waybar			{ background: alpha(@surface, 0.75); border-radius: 12px; color:
 #power-profiles-daemon,
 #window                 { padding: 0 8px; margin: 4px 2px; }
 
-/* FIX CHIRURGICAL PIXEL-PERFECT */
-/* On écarte spécifiquement le couple WiFi/Bluetooth */
-#network                { margin-right: 6px; } 
+/* RIGHT MODULE SPACING FIX */
 #bluetooth              { margin-left: 6px; margin-right: 6px; }
-
-/* On ajuste la feuille pour qu'elle soit parfaitement centrée entre le volume et la batterie 
-#power-profiles-daemon  { margin: 4px 10px; } */
-
-/* On stabilise le bloc volume et batterie 
-#pulseaudio             { margin-right: 4px; }
-#battery                { margin-left: 4px; } */
-
 #custom-power           { margin-right: 10px; padding-right: 12px; }
+#network                { margin-right: 6px; } 
 
 #bluetooth,
 #network,
