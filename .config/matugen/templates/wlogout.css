@@ -1,10 +1,22 @@
+/* 
+* OLYMPUS MATUGEN TEMPLATES WLOGOUT.CSS
+* V1.00 - STABLE
+* GITHUB: jjjjppppllll
+*/
+
+/* MODIFY HERE TO ADD A BACKGROUND IMAGE 
+*  IN CASE THERE IS NO IMAGE, WILL USE 88% TRANSPARENT BLACK */
 * {
     background-image: none;
     font-family: "JetBrainsMono Nerd Font";
 }
+
 window {
     background-color: rgba(0, 0, 0, 0.88);
 }
+
+/* BUTTONS SETUP */
+/* GENERAL STYLE */
 button {
     color: {{colors.on_surface.default.hex}};
     background-color: {{colors.surface.default.hex}};
@@ -19,6 +31,8 @@ button {
     transition: all 0.2s ease;
     font-size: 14px;
 }
+
+/* HOVER AND SELECTION STYLE */
 button:focus, button:active, button:hover {
     background-color: {{colors.primary.default.hex}};
     color: {{colors.on_primary.default.hex}};
@@ -26,6 +40,7 @@ button:focus, button:active, button:hover {
     outline-style: none;
 }
 
+/* ICONS */
 #lock     { background-image: url("/home/athena/.config/wlogout/icons/lock.png"); }
 #reboot   { background-image: url("/home/athena/.config/wlogout/icons/reboot.png"); }
 #shutdown { background-image: url("/home/athena/.config/wlogout/icons/shutdown.png"); }
