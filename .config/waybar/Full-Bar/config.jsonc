@@ -21,10 +21,10 @@
     "layer": "top",
     "position": "top",
     "margin-top": 4,
-    "margin-left": 6,
-    "margin-right": 6,
+    "margin-left": 4,
+    "margin-right": 4,
     "height": 40,
-    "spacing": 8, 
+    "spacing": 0, 
 
 //////////
 // MODULES
@@ -145,6 +145,7 @@
 // NEED TO ADD MATUGEN
 "clock": {
     "locale": "fr_FR.UTF-8", // CHANGE LOCALE FORMAT
+    "on-click": "swaync-client -t",
     "format": "{:%H:%M · %d/%m}", // REVERT DATE TO %m/%d IF NEEDED
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
@@ -206,7 +207,8 @@
         "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connecté(s)",
         "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connecté(s)\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
-        "on-click": "blueman-manager"
+        "on-click": "blueman-manager",
+        "on-click-right": "rfkill toggle bluetooth",
     },
 
 // PULSEAUDIO
