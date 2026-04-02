@@ -1,16 +1,17 @@
-/* * Template Matugen - Olympus Style
- * Version : 2.1 (Anti-Opaque & Clean Structure)
- */
+/* 
+* OLYMPUS MATUGEN TEMPLATES SWAYNC-STYLE.CSS
+* V1.00 - STABLE
+* GITHUB: jjjjppppllll
+*/
 
-/* --- CONFIGURATION GLOBALE --- */
+/* GLOBAL SETUP */
 * {
   font-family: "JetBrainsMono Nerd Font", "Inter", "Roboto", "Ubuntu", sans-serif;
   outline: none;
   box-shadow: none;
 }
 
-/* --- NETTOYAGE RADICAL DES CONTENEURS (Anti-Rectangle Opaque) --- */
-/* On cible les éléments GTK de base avant de styliser nos classes */
+/* CONTAINERS CLEANING */
 list, row, viewport, scrollview {
   background: transparent !important;
   background-color: transparent !important;
@@ -19,7 +20,7 @@ list, row, viewport, scrollview {
   outline: none !important;
 }
 
-/* --- PANNEAU PRINCIPAL --- */
+/* NOTIFICATION CENTER */
 .control-center {
   background: rgba({{colors.surface.default.red}}, {{colors.surface.default.green}}, {{colors.surface.default.blue}}, 0.85);
   border-radius: 20px;
@@ -30,7 +31,7 @@ list, row, viewport, scrollview {
   color: {{colors.on_surface.default.hex}};
 }
 
-/* --- STRUCTURE DES NOTIFICATIONS --- */
+/* NOTIFICATIONS */
 .widget-notifications {
   background: transparent !important;
   margin: 0 !important;
@@ -41,7 +42,7 @@ list, row, viewport, scrollview {
   border: none !important;
 }
 
-/* --- STYLE DES RANGÉES (INDIVIDUELLES) --- */
+/* NOTIFICATIONS ORGANIZATION */
 .notification-row {
   margin: 10px 5px !important; 
   border-radius: 20px !important;
@@ -50,14 +51,14 @@ list, row, viewport, scrollview {
   transition: all 0.2s ease;
 }
 
-/* État Unread / New (Highlight subtil par la bordure) */
+/* UNREAD NOTIFICATIONS STYLE */
 .notification-row.unread,
 .notification-row.new,
 .notification-row:not(.read) {
   border: 1px solid rgba({{colors.primary.default.red}}, {{colors.primary.default.green}}, {{colors.primary.default.blue}}, 0.3) !important;
 }
 
-/* État Focus / Hover / Selected (Verre légèrement plus clair) */
+/* HOVER AND SELECTION */
 .notification-row:focus,
 .notification-row:selected,
 .notification-row:hover {
@@ -65,7 +66,7 @@ list, row, viewport, scrollview {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2) !important;
 }
 
-/* Sécurité pour le contenu interne */
+/* DO NOT TOUCH */
 .notification-row > box,
 .notification-content {
   background: transparent !important;
@@ -73,7 +74,7 @@ list, row, viewport, scrollview {
   font-size: 16px;
 }
 
-/* --- WIDGETS (BOUTONS & CALENDRIER) --- */
+/* WIDGETS */
 .widget-buttons-grid, 
 .widget-calendar {
   background: rgba({{colors.surface_container.default.red}}, {{colors.surface_container.default.green}}, {{colors.surface_container.default.blue}}, 0.3);
@@ -97,7 +98,7 @@ list, row, viewport, scrollview {
   transform: scale(1.02);
 }
 
-/* --- ÉLÉMENTS SPÉCIFIQUES --- */
+/* SPECIFIC ELEMENTS */
 .close-button {
   background: rgba({{colors.error.default.red}}, {{colors.error.default.green}}, {{colors.error.default.blue}}, 0.1);
   color: {{colors.on_surface.default.hex}};
