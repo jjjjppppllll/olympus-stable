@@ -1,7 +1,7 @@
 //////////////////////////////
 //////////////////////////////
 // OLYMPUS WAYBAR CONFIG.JSONC
-// V1.01 - STABLE
+// V1.02 - STABLE
 // GIT: jjjjppppllll
 //////////////////////////////
 //////////////////////////////
@@ -10,12 +10,11 @@
 // WAYBAR DOCK-FULLBAR SETTINGS
 ///////////////////////////////
 
-// DO NOT MODIFY
-// LAYER SETS THE WAYBAR POSITION OVER EVERYTHING ELSE
-
-// VARIABLES
+// VARIABLES:
 // POSITION, MARGINS, HEIGHT
 // SPACING SETS THE SPACE UNDER THE WAYBAR
+// LAYER SETS THE WAYBAR POSITION OVER EVERYTHING ELSE
+// HEIGHT SHALL BE 40 MINIMUM DUE TO CAVA REQUIREMENTS
 
 {
     "layer": "top",
@@ -64,7 +63,7 @@
 // MODULES: INDIVIDUAL SETTINGS
 ///////////////////////////////
 
-// LAUNCHER
+// LAUNCHER:
 // THIS IS THE LOGO ON THE LEFT LAUNCHING ROFI ON CLICK
 // ADAPT TO WHATEVER APP LAUNCHER YOU ARE USING
     "custom/launcher": {
@@ -73,25 +72,24 @@
         "tooltip": false
     },
 
-// ACTIVE TILE
+// ACTIVE TILE:
 // THIS PROVIDES INFO ABOUT WHICH TILE IS ACTIVE
-// USE A "\" TO CONCATENATE
     "hyprland/window": {
         "format": "Desktop\n{initialTitle}",
         "max-length": 20
     },
 
 
-// CPU
+// CPU:
 // THIS PROVIDES INFO ABOUT CPU USAGE
-// UPDATES EVERY 2 SECONDS
+// UPDATES EVERY 2 SECONDS, SWITCH TO 5 FOR POWER ECO
     "cpu": {
         "interval": 2, // CHANGE THIS NUMBER IN SECONDS FOR REFRESH INTERVAL
         "format": "󰻠 {usage}%",
         "states": { "critical": 80 }
     },
 
-// RAM
+// RAM:
 // THIS PROVIDES INFO ABOUT RAM USAGE
 // UPDATES EVERY 5 SECONDS
     "memory": {
@@ -99,7 +97,7 @@
         "format": "󰍛 {percentage}%"
     },
 
-// MEDIA PLAYER
+// MEDIA PLAYER:
 // THIS ALLOWS ACTIVE MUSIC PLAYER TO SHOW ACTIVE TITLE
 // LEFT CLICK PAUSES
 // RIGHT CLICK NEXT SONG
@@ -109,9 +107,9 @@
         "max-length": 40 // ALLOWS CHAIN LENGTH MODIFICATION
     },
     
-// TEMPERATURE
+// TEMPERATURE:
 // THIS PROVIDES INFO ABOUT ACTUAL TEMPERATURE
-// THIS IS SET FOR A CPU ON A LENOVO L14 GEN 5
+// THIS IS SET FOR AMD CPU ON A LENOVO L14 GEN 5
     "temperature": {
         "thermal-zone": 0,
         "critical-threshold": 80, // YOURS TO DECIDE WHAT IS YOUR CRITICAL THRESHOLD
@@ -120,12 +118,12 @@
         "tooltip": false
     },
 
-// CAVA
+// CAVA:
 // THIS IS CAVA ON THE WAYBAR
 // IT'S FULLY OPTIONNAL BUT NTH
     "custom/cava": { "exec": "waybar-cava", "format": "{}" },
 
-// WORKSPACES
+// WORKSPACES:
 // THIS SHOWS WHICH WORKSPACE IS ACTIVE
 // WORKSPACES ARE SMALL DOTS AND ACTIVE ONE IS HIGHLIGHTED
     "hyprland/workspaces": {
@@ -139,9 +137,10 @@
         "persistent-workspaces": { "*": [1, 2, 3, 4, 5, 6] } // NUMBER OF WORKSPACES APPEARING, UP TO TEN
     },
 
-// CLOCK
+// CLOCK:
 // CLOCK IS IN FRENCH FORMAT
 // HOVER SHOWS A CALENDAR IN FRENCH FORMAT
+// ON CLICK SHOWS NOTIFICATION CENTER (SWAYNC)
 // NEED TO ADD MATUGEN
 "clock": {
     "locale": "fr_FR.UTF-8", // CHANGE LOCALE FORMAT
@@ -160,7 +159,7 @@
     }
 },
 
-// POWER PROFILES DAEMON
+// POWER PROFILES DAEMON:
 // THIS IS USEFUL FOR LENOVO
 // THERE ARE THREE STATES: PERFORMANCE / BALANCED / POWER-SAVER
 "power-profiles-daemon": {
@@ -174,7 +173,7 @@
     }
 },
 
-// BATTERY
+// BATTERY:
 // THIS SHOWS REMAINING BATTERY CAPACITY
     "battery": { 
         "format": "{icon} {capacity}%", 
@@ -198,7 +197,8 @@
 // NETWORK: BLUETOOTH
 // THIS SHOWS SERVICE STATUS
 // SHOWS CONNECTED DEVICE BATTERY LEVEL IF AVAILABLE
-// LAUNCHES BLUEMAN-MANAGER ON CLICK
+// CLICK: BLUEMAN-MANAGER
+// RIGHT CLICK: ON/OFF SWITCH
     "bluetooth": {
         "format": "",
         "format-disabled": "󰂲",
@@ -211,7 +211,7 @@
         "on-click-right": "rfkill toggle bluetooth",
     },
 
-// PULSEAUDIO
+// PULSEAUDIO:
 // THIS IS AUDIO MANAGER, IT SHOWS VOLUME %AGE
 // IF MUTE, VARIABLE COLOR
 // LEFT CLICK: PAVUCONTROL
@@ -234,7 +234,7 @@
         "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
     },
 
-// KEYBOARD SWITCHER
+// KEYBOARD SWITCHER:
 // THIS ALLOWS A SWITCH BETWEEN FR & US INTL KEYBOARD THROUGH A SCRIPT
 // SCRIPT IS IN .scripts FOLDER
 // IT'S FULLY OPTIONAL AND DEPENDS ON NEEDS, MH IF USING DIFFERENT LANGUAGES
